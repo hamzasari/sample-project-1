@@ -1,0 +1,4 @@
+export const SET_USER_INFO = '@@USER_INFO/SET_USER_INFO';
+export const EMPTY_USER_INFO = '@@USER_INFO/EMPTY_USER_INFO';
+
+export const SET_PAGE_CODE = '@@PAGE/SET_PAGE_CODE';

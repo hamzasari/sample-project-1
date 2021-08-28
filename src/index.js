@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
+import store from './redux/store';
+import AppNavigator from './navigation/AppNavigator';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 import reportWebVitals from './reportWebVitals';
 
+import './styles/index.sass';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <Header />
+      <AppNavigator />
+      <Footer />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
