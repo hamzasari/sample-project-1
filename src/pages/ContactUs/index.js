@@ -19,15 +19,11 @@ const ContactUs = ({ userInfo, locale }) => {
   useEffect(() => {
     setName(userInfo?.name);
     setEmail(userInfo?.email);
-  });
+  }, [userInfo.name, userInfo.email]);
 
   const [stateFormErrors, setStateFormErrors] = useState({});
   let formErrors = {};
   let formIsValid = true;
-
-  const isObjectEmpty = (obj) => {
-    return JSON.stringify(obj) === JSON.stringify({});
-  };
 
   const isFormValid = () => {
     if (!name) {
@@ -191,7 +187,7 @@ const ContactUs = ({ userInfo, locale }) => {
               return (
                 <a
                   className="dropdown-item"
-                  onClick={(e) => {
+                  onClick={() => {
                     setCountry(countryElement[0]);
                     toggleCountryDropdownIsActive();
                   }}>
