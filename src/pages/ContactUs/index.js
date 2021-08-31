@@ -16,10 +16,19 @@ const ContactUs = ({ userInfo, locale }) => {
   const [filteredCountryList, setFilteredCountryList] = useState([]);
   const [message, setMessage] = useState('');
 
+  const isObjectEmpty = (obj) => {
+    return JSON.stringify(obj) === JSON.stringify({});
+  };
+
   useEffect(() => {
-    setName(userInfo?.name);
-    setEmail(userInfo?.email);
-  }, [userInfo.name, userInfo.email]);
+    if (isObjectEmpty(userInfo)) {
+      setName('');
+      setEmail('');
+    } else {
+      setName(userInfo?.name);
+      setEmail(userInfo?.email);
+    }
+  }, [userInfo]);
 
   const [stateFormErrors, setStateFormErrors] = useState({});
   let formErrors = {};
@@ -186,6 +195,7 @@ const ContactUs = ({ userInfo, locale }) => {
             {filteredCountryList.map((countryElement) => {
               return (
                 <a
+                  key={countryElement[0]}
                   className="dropdown-item"
                   onClick={() => {
                     setCountry(countryElement[0]);
@@ -205,9 +215,9 @@ const ContactUs = ({ userInfo, locale }) => {
       </h6>
       <textarea
         className={`textarea${stateFormErrors.message ? ' is-danger' : ''}`}
-        onChange={(e) => setMessage(e.target.value)}>
-        {message}
-      </textarea>
+        onChange={(e) => setMessage(e.target.value)}
+        value={message}
+      />
       <span className={`error-span`}>{stateFormErrors.message}</span>
       <footer className="footer contact-us-footer">
         <button className="button is-success" onClick={handleSend}>
