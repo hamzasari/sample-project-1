@@ -53,7 +53,9 @@ const Header = () => {
           <Link to={NavigationRoutes.homepage} className="navbar-item">
             <Translate value={`headerLinks.homepage`} />
           </Link>
-
+          <Link to={NavigationRoutes.about} className="navbar-item">
+            <Translate value={`headerLinks.about`} />
+          </Link>
           <Link to={NavigationRoutes.contactUs} className="navbar-item">
             <Translate value={`headerLinks.contactUs`} />
           </Link>

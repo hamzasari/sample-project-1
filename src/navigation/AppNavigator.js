@@ -5,6 +5,7 @@ import NavigationRoutes from './NavigationRoutes';
 // screens
 import Homepage from '../pages/Homepage';
 import ContactUs from '../pages/ContactUs';
+import About from '../pages/About';
 
 /**
  * Create react navigation routers
@@ -17,6 +18,7 @@ const AppNavigator = () => (
       path={NavigationRoutes.homepage}
       component={withRouter(Homepage)}
     />
+    <Route exact path={NavigationRoutes.about} component={withRouter(About)} />
     <Route
       exact
       path={NavigationRoutes.contactUs}

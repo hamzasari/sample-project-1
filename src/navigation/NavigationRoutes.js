@@ -4,6 +4,7 @@
  */
 const NavigationRoutes = {
   homepage: '/',
+  about: '/about',
   contactUs: '/contactUs',
 };
 
