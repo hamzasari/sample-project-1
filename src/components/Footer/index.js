@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Translate } from 'react-redux-i18n';
 
-const Footer = () => {
+const Footer = React.memo(() => {
   return (
     <footer className="footer">
       <div className="content has-text-centered">
@@ -18,6 +18,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

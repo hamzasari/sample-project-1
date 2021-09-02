@@ -6,7 +6,7 @@ import NavigationRoutes from '../../navigation/NavigationRoutes';
 import LoginButtonAndModal from '../LoginButtonAndModal';
 import './style.sass';
 
-const Header = () => {
+const Header = React.memo(() => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleIsActive = () => {
@@ -69,6 +69,6 @@ const Header = () => {
       </div>
     </nav>
   );
-};
+});
 
 export default Header;

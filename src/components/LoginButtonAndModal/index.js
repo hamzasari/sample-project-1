@@ -6,7 +6,7 @@ import LocalePicker from '../LocalePicker';
 import './style.sass';
 import { emptyUserInfo, setUserInfo } from '../../redux/actions/user';
 
-const LoginButtonAndModal = ({
+const LoginButtonAndModal = React.memo(({
   userInfo,
   dispatchSetUserInfo,
   dispatchEmptyUserInfo,
@@ -173,7 +173,7 @@ const LoginButtonAndModal = ({
       </div>
     );
   }
-};
+});
 
 LoginButtonAndModal.propTypes = {
   userInfo: PropTypes.object,

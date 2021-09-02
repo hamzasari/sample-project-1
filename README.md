@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - npm v6.14.9
 - yarn v1.22.5
 
+You need to run `yarn install` command to install necessary dependencies in the project directory.
+
 ## Available Scripts
 
 In the project directory, you can run:

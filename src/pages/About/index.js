@@ -4,7 +4,7 @@ import { Translate } from 'react-redux-i18n';
 
 import './style.sass';
 
-const About = () => {
+const About = React.memo(() => {
   return (
     <div className={`about-page-content-container`}>
       <h2 className={`title is-2`}>
@@ -21,6 +21,6 @@ const About = () => {
       </div>
     </div>
   );
-};
+});
 
 export default About;
