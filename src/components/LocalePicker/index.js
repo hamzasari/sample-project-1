@@ -6,7 +6,7 @@ import { supportedLocales } from '../../config/i18n';
 import { setLocaleWithFallback } from '../../redux/actions/i18n';
 import './style.sass';
 
-const LocalePicker = React.memo((props) => {
+const LocalePicker = (props) => {
   const changeLocale = (code) => {
     props.setLocaleWithFallback(code);
   };
@@ -51,7 +51,7 @@ const LocalePicker = React.memo((props) => {
       </div>
     </div>
   );
-});
+};
 
 LocalePicker.propTypes = {
   locale: PropTypes.string.isRequired,

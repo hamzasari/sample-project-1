@@ -7,7 +7,7 @@ import './style.sass';
 import translations from '../../l10n/translations';
 import { connect } from 'react-redux';
 
-const ContactUs = React.memo(({ userInfo, locale }) => {
+const ContactUs = ({ userInfo, locale }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -226,7 +226,7 @@ const ContactUs = React.memo(({ userInfo, locale }) => {
       </footer>
     </div>
   );
-});
+};
 
 ContactUs.propTypes = {
   locale: PropTypes.string.isRequired,

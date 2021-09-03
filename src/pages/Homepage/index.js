@@ -8,7 +8,7 @@ import pic1 from '../../assets/pic1.png';
 import pic2 from '../../assets/pic2.png';
 import pic3 from '../../assets/pic3.png';
 
-const Homepage = React.memo(() => {
+const Homepage = () => {
   return (
     <div className={`page-content-container`}>
       <h2 className={`title is-2`}>
@@ -40,6 +40,6 @@ const Homepage = React.memo(() => {
       </div>
     </div>
   );
-});
+};
 
 export default Homepage;
