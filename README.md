@@ -18,6 +18,8 @@ You need to run `yarn install` command to install necessary dependencies in the 
 
 In daily work, mostly I use `redux-saga`. While I have time, I used `redux-thunk` to learn and apply on this project.
 
+I stored `translations` for localization and `user object` in redux state.
+
 ### Localization
 
 `react-redux-i18n` package is used for localization.
@@ -32,6 +34,44 @@ In daily work, mostly I use `redux-saga`. While I have time, I used `redux-thunk
 
 While I have time, I used a responsive CSS framework package named as `bulma` and `SASS` language, which I never used
 both of them before, to learn and apply on this project.
+
+## Project Structure
+
+I didn't split components into too many components for this demo project. But, we can split some of them into smaller
+components to reuse if needed.
+
+On the root of structure, there is `router` and `state management` that encapsulates pages and components. Inside them,
+there is `Header`, `AppNavigator` to navigate pages and `Footer` components exist. ***(
+/src/index.js)***
+
+Header component consists top menu. `Brand`, `links`, `LocalePicker` and `LoginButtonAndModal` components.
+
+AppNavigator is used to navigate pages.
+
+Footer component is a basic footer, and it can be shown on every page with this structure as well as Header.
+
+There is three pages: ***(/src/pages)***
+
+- Homepage
+- About
+- Contact Us
+
+There is four components: ***(/src/components)***
+
+- Footer
+- Header
+- LocalePicker
+- LoginButtonAndModal
+
+Translations are in ***/src/l10n/translations.js*** file.
+
+Localization configuration is in ***/src/config/i18n.js*** file.
+
+Page navigation configuration is in ***/src/navigation*** folder.
+
+State management configurations and methods are in ***/src/redux*** folder.
+
+Form validation methods are moved to ***/src/common/formValidations.js*** file to reuse.
 
 ## Available Scripts
 
