@@ -2,7 +2,7 @@
 
 This project is a `React Web Application`.
 
-`Typescript` is not requested to implement this project, if it was wanted I could use typescript for this project.
+`Typescript` usage is not requested to implement this project, if it was wanted I could use typescript for this project.
 
 ## Used technologies
 
