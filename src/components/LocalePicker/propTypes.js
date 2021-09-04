@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
  */
 export const LocalePickerPropTypes = {
   /**
-   * Current locale information in redux state
-   */
-  locale: PropTypes.string.isRequired,
-  /**
    * Function to dispatch locale state variable in redux
    */
   setLocaleWithFallback: PropTypes.func.isRequired,
+  /**
+   * Current locale information in redux state
+   */
+  locale: PropTypes.string.isRequired,
   /**
    * Parameter to move locale picker right or left within a container
    */

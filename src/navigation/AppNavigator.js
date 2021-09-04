@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
+
 import NavigationRoutes from './NavigationRoutes';
 
-// screens
 import Homepage from '../pages/Homepage';
 import ContactUs from '../pages/ContactUs';
 import About from '../pages/About';
 
 /**
- * Create react navigation routers
+ * React navigation routers
  * @returns {JSX.Element}
  */
 const AppNavigator = () => (

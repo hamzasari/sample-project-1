@@ -1,3 +1,7 @@
+/**
+ * Translation json for localization
+ * @type {object}
+ */
 const translations = {
   en: {
     headerLinks: {

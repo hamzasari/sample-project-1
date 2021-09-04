@@ -1,25 +1,93 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-
-import { I18n, Translate } from 'react-redux-i18n';
-
-import './style.sass';
-import translations from '../../l10n/translations';
 import { connect } from 'react-redux';
+import { Translate } from 'react-redux-i18n';
 
+import translations from '../../l10n/translations';
+import { isObjectEmpty } from '../../common/helpers';
+import { mapStateToProps } from './state';
+import { ContactUsPropTypes } from './propTypes';
+import './style.sass';
+import {
+  validateCountry,
+  validateEmail,
+  validateMessage,
+  validateName,
+  validatePhoneNumber,
+} from '../../common/formValidations';
+
+/**
+ * Contact us page
+ * @param {object} userInfo
+ * @param {string} locale
+ * @returns {JSX.Element}
+ */
 const ContactUs = ({ userInfo, locale }) => {
+  /**
+   * @typedef {string} name - state variable is used to store user name
+   * @typedef {function} setName - method to set name state variable
+   * @type {[name, setName]} name
+   */
   const [name, setName] = useState('');
+  /**
+   * @typedef {string} email - state variable is used to store user email
+   * @typedef {function} setEmail - method to set email state variable
+   * @type {[email, setEmail]} email
+   */
   const [email, setEmail] = useState('');
+  /**
+   * @typedef {string} phoneNumber - state variable is used to store user phone number
+   * @typedef {function} setPhoneNumber - method to set phoneNumber state variable
+   * @type {[phoneNumber, setPhoneNumber]} phoneNumber
+   */
   const [phoneNumber, setPhoneNumber] = useState('');
+  /**
+   * @typedef {string} country - state variable is used to store country code
+   * @typedef {function} setCountry - method to set country state variable
+   * @type {[country, setCountry]} country
+   */
   const [country, setCountry] = useState('');
+  /**
+   * @typedef {boolean} countryDropdownIsActive - state variable is used to identify if the country dropdown should be shown or not
+   * @typedef {function} setCountryDropdownIsActive - method to set countryDropdownIsActive state variable to true or false
+   * @type {[countryDropdownIsActive, setCountryDropdownIsActive]} countryDropdownIsActive
+   */
   const [countryDropdownIsActive, setCountryDropdownIsActive] = useState(false);
+  /**
+   * @typedef {Array} filteredCountryList - state variable is used to store filtered country list
+   * @typedef {function} setFilteredCountryList - method to set filteredCountryList state variable
+   * @type {[filteredCountryList, setFilteredCountryList]} filteredCountryList
+   */
   const [filteredCountryList, setFilteredCountryList] = useState([]);
+  /**
+   * @typedef {string} message - state variable is used to store message
+   * @typedef {function} setMessage - method to set message state variable
+   * @type {[message, setMessage]} message
+   */
   const [message, setMessage] = useState('');
 
-  const isObjectEmpty = (obj) => {
-    return JSON.stringify(obj) === JSON.stringify({});
-  };
+  /**
+   * @typedef {Object} stateFormErrors - state variable is used to store form errors object
+   * @typedef {Function} setStateFormErrors - method to set stateFormErrors state variable
+   * @type {[stateFormErrors, setStateFormErrors]} stateFormErrors
+   */
+  const [stateFormErrors, setStateFormErrors] = useState({});
+  /**
+   * Object to store form errors
+   * @property {string} name - Error message for name
+   * @property {string} email - Error message for email
+   * @property {string} phoneNumber - Error message for phone number
+   * @property {string} country - Error message for country
+   * @property {string} message - Error message for message
+   * @type {object}
+   */
+  let formErrors = {};
+  /**
+   * Property to store information of if the form is valid
+   * @type {boolean}
+   */
+  let formIsValid = true;
 
+  // if userInfo state value is changed then set name and email variables with suitable values
   useEffect(() => {
     if (isObjectEmpty(userInfo)) {
       setName('');
@@ -30,63 +98,34 @@ const ContactUs = ({ userInfo, locale }) => {
     }
   }, [userInfo]);
 
-  const [stateFormErrors, setStateFormErrors] = useState({});
-  let formErrors = {};
-  let formIsValid = true;
-
+  /**
+   * Return true if the form is valid, otherwise returns false
+   * @returns {boolean}
+   */
   const isFormValid = () => {
-    if (!name) {
-      formIsValid = false;
-      formErrors.name = I18n.t('formErrors.nameEmpty');
-    }
+    formIsValid = validateName(name).valid;
+    formErrors.name = validateName(name).message;
 
-    if (!email) {
-      formIsValid = false;
-      formErrors.email = I18n.t('formErrors.emailEmpty');
-    } else if (typeof email !== 'undefined') {
-      let lastAtPos = email.lastIndexOf('@');
-      let lastDotPos = email.lastIndexOf('.');
+    formIsValid = validateEmail(email).valid;
+    formErrors.email = validateEmail(email).message;
 
-      if (
-        !(
-          lastAtPos < lastDotPos &&
-          lastAtPos > 0 &&
-          email.indexOf('@@') === -1 &&
-          lastDotPos > 2 &&
-          email.length - lastDotPos > 2
-        )
-      ) {
-        formIsValid = false;
-        formErrors.email = I18n.t('formErrors.emailNotValid');
-      }
-    }
+    formIsValid = validatePhoneNumber(phoneNumber).valid;
+    formErrors.phoneNumber = validatePhoneNumber(phoneNumber).message;
 
-    if (!phoneNumber) {
-      formIsValid = false;
-      formErrors.phoneNumber = I18n.t('formErrors.phoneNumberEmpty');
-    } else if (typeof phoneNumber !== 'undefined') {
-      let regex = new RegExp(/^\d+$/);
-      if (!regex.test(phoneNumber)) {
-        formIsValid = false;
-        formErrors.phoneNumber = I18n.t('formErrors.phoneNumberNotValid');
-      }
-    }
+    formIsValid = validateCountry(country).valid;
+    formErrors.country = validateCountry(country).message;
 
-    if (!country) {
-      formIsValid = false;
-      formErrors.country = I18n.t('formErrors.countryEmpty');
-    }
-
-    if (!message) {
-      formIsValid = false;
-      formErrors.message = I18n.t('formErrors.messageEmpty');
-    }
+    formIsValid = validateMessage(message).valid;
+    formErrors.message = validateMessage(message).message;
 
     setStateFormErrors(formErrors);
 
     return formIsValid;
   };
 
+  /**
+   * Handles action that is triggered from send button
+   */
   const handleSend = () => {
     if (isFormValid()) {
       const postObject = {
@@ -101,6 +140,9 @@ const ContactUs = ({ userInfo, locale }) => {
     }
   };
 
+  /**
+   * Handles action that is triggered from input that is in country dropdown
+   */
   const handleCountrySearch = (e) => {
     e.preventDefault();
     if (e.target.value === '') {
@@ -116,6 +158,9 @@ const ContactUs = ({ userInfo, locale }) => {
     }
   };
 
+  /**
+   * Toggles the countryDropdownIsActive state variable to true or false
+   */
   const toggleCountryDropdownIsActive = () => {
     setCountryDropdownIsActive(!countryDropdownIsActive);
   };
@@ -228,14 +273,6 @@ const ContactUs = ({ userInfo, locale }) => {
   );
 };
 
-ContactUs.propTypes = {
-  locale: PropTypes.string.isRequired,
-  userInfo: PropTypes.object,
-};
-
-const mapStateToProps = (state) => ({
-  locale: state.i18n.locale,
-  userInfo: state.user.info,
-});
+ContactUs.propTypes = ContactUsPropTypes;
 
 export default connect(mapStateToProps)(ContactUs);

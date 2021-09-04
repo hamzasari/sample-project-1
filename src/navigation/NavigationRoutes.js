@@ -1,6 +1,6 @@
 /**
  * String definitions of routes
- * @typedef {(string)} NavigationRoutes
+ * @typedef {object} NavigationRoutes
  */
 const NavigationRoutes = {
   homepage: '/',

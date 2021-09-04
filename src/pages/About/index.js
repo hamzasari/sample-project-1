@@ -1,9 +1,12 @@
 import React from 'react';
-
 import { Translate } from 'react-redux-i18n';
 
 import './style.sass';
 
+/**
+ * About page
+ * @returns {JSX.Element}
+ */
 const About = () => {
   return (
     <div className={`about-page-content-container`}>

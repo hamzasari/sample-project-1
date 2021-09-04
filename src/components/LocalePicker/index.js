@@ -10,15 +10,15 @@ import './style.sass';
 /**
  * LocalePicker component
  * You can see the supported locales and change current locale with this component
- * @param setLocaleWithFallback - Function to dispatch locale state variable in redux
- * @param locale - Current locale information in redux state
- * @param align - Parameter to move locale picker right or left within a container
+ * @param {func} setLocaleWithFallback - Function to dispatch locale state variable in redux
+ * @param {string} locale - Current locale information in redux state
+ * @param {string} align - Parameter to move locale picker right or left within a container
  * @returns {JSX.Element}
  */
 const LocalePicker = ({ setLocaleWithFallback, locale, align }) => {
   /**
    * Changes current locale information that is stored in redux state
-   * @param code - can be one of the keys of supportedLocales object in /src/config/i18.js
+   * @param {string} code - can be one of the keys of supportedLocales object in /src/config/i18.js
    */
   const changeLocale = (code) => {
     setLocaleWithFallback(code);

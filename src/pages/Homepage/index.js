@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Translate } from 'react-redux-i18n';
 
 import './style.sass';
@@ -8,6 +7,11 @@ import pic1 from '../../assets/pic1.png';
 import pic2 from '../../assets/pic2.png';
 import pic3 from '../../assets/pic3.png';
 
+/**
+ * Home page
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Homepage = () => {
   return (
     <div className={`page-content-container`}>
