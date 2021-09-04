@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item">
+        <button className="navbar-item link-button">
           <span className="icon-text">
             <span className="icon">
               <span className="fas fa-atom fa-lg" />
@@ -33,9 +33,8 @@ const Header = () => {
               )}
             </span>
           </span>
-        </a>
-        <a
-          role="button"
+        </button>
+        <button
           className={`navbar-burger${isActive ? ` is-active` : ``}`}
           aria-label="menu"
           aria-expanded="false"
@@ -44,7 +43,7 @@ const Header = () => {
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
-        </a>
+        </button>
       </div>
       <div
         id="nav-links"

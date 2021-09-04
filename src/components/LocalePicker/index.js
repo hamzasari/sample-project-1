@@ -15,16 +15,16 @@ const LocalePicker = (props) => {
     return (
       <>
         {Object.entries(supportedLocales).map((locale) => (
-          <a
+          <button
             key={locale[0]}
-            className={`navbar-item${
+            className={`link-button navbar-item${
               locale[0] === props.locale ? ` is-active` : ``
             }`}
             onClick={() => {
               changeLocale(locale[0]);
             }}>
             {locale[1]}
-          </a>
+          </button>
         ))}
       </>
     );
@@ -35,7 +35,7 @@ const LocalePicker = (props) => {
       className={`navbar-item has-dropdown is-hoverable${
         props.align === 'right' ? ' align-right' : ''
       }`}>
-      <a className={`navbar-link`}>
+      <button className={`navbar-link link-button`}>
         <span className="icon-text">
           <span className="icon">
             <span className="fas fa-globe" />
@@ -44,7 +44,7 @@ const LocalePicker = (props) => {
             <Translate value={`headerLinks.language`} />
           </span>
         </span>
-      </a>
+      </button>
 
       <div className="navbar-dropdown">
         <Locales />

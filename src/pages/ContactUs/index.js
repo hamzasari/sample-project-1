@@ -194,15 +194,15 @@ const ContactUs = ({ userInfo, locale }) => {
             <hr className="dropdown-divider" />
             {filteredCountryList.map((countryElement) => {
               return (
-                <a
+                <button
                   key={countryElement[0]}
-                  className="dropdown-item"
+                  className="dropdown-item link-button country-item"
                   onClick={() => {
                     setCountry(countryElement[0]);
                     toggleCountryDropdownIsActive();
                   }}>
                   <Translate value={`countryList.${countryElement[0]}`} />
-                </a>
+                </button>
               );
             })}
           </div>
