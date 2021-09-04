@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Footer snapshot 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="content has-text-centered"
+  >
+    <p>
+      <strong>
+        <span>
+          title
+        </span>
+      </strong>
+      <br />
+      Hamza SARI
+      <br />
+      2021
+    </p>
+  </div>
+</footer>
+`;

@@ -6,7 +6,6 @@ import LocalePicker from '../LocalePicker';
 import { LoginButtonAndModalPropTypes } from './propTypes';
 import { mapDispatchToProps, mapStateToProps } from './state';
 import { isObjectEmpty } from '../../common/helpers';
-import './style.sass';
 import {
   validateEmail,
   validateName,

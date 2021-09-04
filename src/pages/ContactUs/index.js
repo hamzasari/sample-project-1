@@ -6,7 +6,6 @@ import translations from '../../l10n/translations';
 import { isObjectEmpty } from '../../common/helpers';
 import { mapStateToProps } from './state';
 import { ContactUsPropTypes } from './propTypes';
-import './style.sass';
 import {
   validateCountry,
   validateEmail,

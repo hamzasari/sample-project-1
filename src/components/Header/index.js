@@ -5,7 +5,6 @@ import { Translate } from 'react-redux-i18n';
 import NavigationRoutes from '../../navigation/NavigationRoutes';
 import LocalePicker from '../LocalePicker';
 import LoginButtonAndModal from '../LoginButtonAndModal';
-import './style.sass';
 
 /**
  * Header component

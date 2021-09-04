@@ -5,7 +5,6 @@ import { Translate } from 'react-redux-i18n';
 import { supportedLocales } from '../../config/i18n';
 import { LocalePickerPropTypes } from './propTypes';
 import { mapDispatchToProps, mapStateToProps } from './state';
-import './style.sass';
 
 /**
  * LocalePicker component

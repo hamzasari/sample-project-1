@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders About snapshot 1`] = `
+<div
+  className="about-page-content-container"
+>
+  <h2
+    className="title is-2"
+  >
+    <span>
+      about
+    </span>
+  </h2>
+  <div
+    className="about-content-text"
+  >
+    <span>
+      content1
+    </span>
+  </div>
+  <div
+    className="about-content-text"
+  >
+    <span>
+      content2
+    </span>
+  </div>
+  <div
+    className="about-content-text"
+  >
+    <span>
+      content3
+    </span>
+  </div>
+</div>
+`;

@@ -35,6 +35,8 @@ I stored `translations` for localization and `user object` in redux state.
 While I have time, I used a responsive CSS framework package named as `bulma` and `SASS` language, which I never used
 both of them before, to learn and apply on this project.
 
+In daily work, I use `styled-components` for most cases and `Stylesheet` for react-native.
+
 ## Project Structure
 
 I didn't split components into too many components for this demo project. But, we can split some of them into smaller
@@ -72,6 +74,15 @@ Page navigation configuration is in ***/src/navigation*** folder.
 State management configurations and methods are in ***/src/redux*** folder.
 
 Form validation methods are moved to ***/src/common/formValidations.js*** file to reuse.
+
+## Testing
+
+I added snapshot tests for some components.
+
+I couldn't spare much time for this demo project due to the intensity of my daily work. So, I couldn't proceed with test
+driven development.
+
+If I had more time, I could implement other snapshot tests and unit tests for implemented functions.
 
 ## Available Scripts
 
