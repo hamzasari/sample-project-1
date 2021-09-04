@@ -2,6 +2,8 @@
 
 This project is a `React Web Application`.
 
+`Typescript` is not requested to implement this project, if it was wanted I could use typescript for this project.
+
 ## Used technologies
 
 - node v14.15.3
@@ -82,7 +84,7 @@ I added snapshot tests for some components.
 I couldn't spare much time for this demo project due to the intensity of my daily work. So, I couldn't proceed with test
 driven development.
 
-If I had more time, I could implement other snapshot tests and unit tests for implemented functions.
+If I had more time, I could implement other snapshot tests, unit tests for common functions and redux store tests.
 
 ## Available Scripts
 
