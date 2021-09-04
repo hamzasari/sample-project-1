@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Translate } from 'react-redux-i18n';
-import PropTypes from 'prop-types';
 
 import { supportedLocales } from '../../config/i18n';
-import { setLocaleWithFallback } from '../../redux/actions/i18n';
+import { LocalePickerPropTypes } from './propTypes';
+import { mapDispatchToProps, mapStateToProps } from './state';
 import './style.sass';
 
 /**
@@ -63,7 +63,6 @@ const LocalePicker = ({ setLocaleWithFallback, locale, align }) => {
           </span>
         </span>
       </button>
-
       <div className="navbar-dropdown">
         <Locales />
       </div>
@@ -71,46 +70,6 @@ const LocalePicker = ({ setLocaleWithFallback, locale, align }) => {
   );
 };
 
-/**
- * Property types of LocalePicker component
- * @type {{setLocaleWithFallback: Validator<NonNullable<(...args: any[]) => any>>, locale: Validator<NonNullable<string>>, align: Requireable<string>}}
- */
-LocalePicker.propTypes = {
-  /**
-   * Current locale information in redux state
-   */
-  locale: PropTypes.string.isRequired,
-  /**
-   * Function to dispatch locale state variable in redux
-   */
-  setLocaleWithFallback: PropTypes.func.isRequired,
-  /**
-   * Parameter to move locale picker right or left within a container
-   */
-  align: PropTypes.string,
-};
-
-/**
- * mapStateToProps function to use with redux
- * @param state
- * @returns {{locale}}
- */
-const mapStateToProps = (state) => ({
-  /**
-   * Current locale information in redux state
-   */
-  locale: state.i18n.locale,
-});
-
-/**
- * mapDispatchToProps object to use with redux
- * @type {{setLocaleWithFallback: ((function(*=): function(*): *)|*)}}
- */
-const mapDispatchToProps = {
-  /**
-   * Function to dispatch locale state variable in redux
-   */
-  setLocaleWithFallback,
-};
+LocalePicker.propTypes = LocalePickerPropTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocalePicker);
